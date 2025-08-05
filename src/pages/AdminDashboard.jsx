@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Axios from "../api";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts2/AuthContext";
 import { toast } from "react-toastify";
 
 const AdminDashboard = () => {

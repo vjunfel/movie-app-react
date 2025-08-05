@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Axios from "../api";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts2/AuthContext";
 import { toast } from "react-toastify";
 
 const poster = "https://m.media-amazon.com/images/I/51EG732BV3L._AC_.jpg";
