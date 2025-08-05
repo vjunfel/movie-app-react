@@ -23,25 +23,32 @@ const Register = () => {
 				email,
 				password,
 			});
-      console.log(response);
-      
-      if (response.status !== 201) {
+			console.log(response);
+
+			if (response.status !== 201) {
 				throw new Error("Registration failed");
 			}
-      
+
 			toast.success("Registration successful!");
 			navigate("/login"); // Redirect after success
 		} catch (error) {
-			console.error("Registration error:", error.response?.data || error.message);
+			console.error(
+				"Registration error:",
+				error.response?.data || error.message
+			);
 			toast.error(error.response?.data?.message || "Registration failed.");
 		}
 	};
 
 	return (
-		<div className="container" style={{ maxWidth: "500px" }}>
+		<form
+			onSubmit={handleRegister}
+			className="mx-auto d-flex flex-column justify-content-center align-items-center mt-5"
+			style={{ maxWidth: "400px" }}
+		>
 			<h2 className="mt-5 pt-5 pb-4 text-center">Register</h2>
-			<form onSubmit={handleRegister}>
-				{/* <div className="mb-3">
+
+			{/* <div className="mb-3 w-100">
 					<label>Name:</label>
 					<input
 						type="text"
@@ -52,29 +59,29 @@ const Register = () => {
 					/>
 				</div> */}
 
-				<div className="mb-3">
-					<label>Email:</label>
-					<input
-						type="email"
-						className="form-control"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</div>
+			<div className="mb-3 w-100">
+				<label>Email:</label>
+				<input
+					type="email"
+					className="form-control"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+					required
+				/>
+			</div>
 
-				<div className="mb-3">
-					<label>Password:</label>
-					<input
-						type="password"
-						className="form-control"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</div>
+			<div className="mb-3 w-100">
+				<label>Password:</label>
+				<input
+					type="password"
+					className="form-control"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+					required
+				/>
+			</div>
 
-				{/* <div className="mb-3">
+			{/* <div className="mb-3 w-100">
 					<label>Confirm Password:</label>
 					<input
 						type="password"
@@ -85,13 +92,11 @@ const Register = () => {
 					/>
 				</div> */}
 
-				<button type="submit" className="btn btn-primary w-100">
-					Register
-				</button>
-        
-        <p className="my-5 text-center">Already have an account? <Link to="/login">Login</Link></p>
-			</form>
-		</div>
+			<button	type="submit"	className="btn btn-primary w-100">Register</button>
+			<p className="my-5 text-center">Already have an account? &nbsp;
+				<Link to="/login">Login </Link>
+			</p>
+		</form>
 	);
 };
 

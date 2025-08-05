@@ -60,7 +60,8 @@ const Login = () => {
 				/>
 			</div>
 			<button className="btn btn-primary w-100">Login</button>
-			<p className="my-5">Already have an account? <Link to="/register">Register</Link></p>
+			<p className="my-5">Already have an account? &nbsp;
+				<Link to="/register">Register</Link></p>
 		</form>
 	);
 };
