@@ -3,8 +3,7 @@ import axios from "axios";
 console.log("BASE_URL", import.meta.env.VITE_REACT_SERVER_BASE_URL);
 // Create axios instance - Option 1
 const Axios = axios.create({
-	baseURL: "http://localhost:4000/",
-	// withCredentials: true,
+	baseURL: import.meta.env.VITE_REACT_SERVER_BASE_URL,
 	headers: { "Content-Type": "application/json" },
 });
 
@@ -12,7 +11,7 @@ const Axios = axios.create({
 Axios.interceptors.request.use((config) => {
     
   const token = localStorage.getItem("token");
-  console.log("API RESPONSE TOKEN ===========>>> ", token);
+  // console.log("API RESPONSE TOKEN ===========>>> ", token);
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;

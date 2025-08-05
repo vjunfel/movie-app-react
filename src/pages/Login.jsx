@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Axios from "../api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import Register from "./Register";
+import { toast } from "react-toastify";
 
 const Login = () => {
-	const [email, setEmail] = useState("test99@mail.com");
-	const [password, setPassword] = useState("asdf1234");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
 	const navigate = useNavigate();
   const { login } = useAuth();
@@ -14,7 +16,6 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			const res = await Axios.post("/users/login", { email, password });
-			console.log(res);
 
 			if (res.status !== 200) {
 				throw new Error("Login failed");
@@ -24,9 +25,10 @@ const Login = () => {
       
       login(token);
       
-			navigate("/profile");
+			navigate("/");
 		} catch (err) {
 			console.log(err || "Login failed");
+			toast.error(err.response?.data?.message || "Login failed.");
 		}
 	};
 
@@ -58,6 +60,7 @@ const Login = () => {
 				/>
 			</div>
 			<button className="btn btn-primary w-100">Login</button>
+			<p className="my-5">Already have an account? <Link to="/register">Register</Link></p>
 		</form>
 	);
 };

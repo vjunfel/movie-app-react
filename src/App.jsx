@@ -3,9 +3,9 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import AdminDashboard from "./pages/AdminDashboard";
-import RequireAdmin from "./components/RequiredAdmin";
 import Profile from "./pages/Profile";
+import MovieDetails from "./pages/MovieDetails";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -19,14 +19,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/movies" element={<Home />} />
-          <Route
-            path="/admin"
-            element={
-              <RequireAdmin>
-                <AdminDashboard />
-              </RequireAdmin>
-            }
-          />
+          <Route path="/movie-details/:id" element={<MovieDetails />} />
+          <Route path="/dashboard" element={<AdminDashboard />} />
         </Routes>
       </div>
     </div>

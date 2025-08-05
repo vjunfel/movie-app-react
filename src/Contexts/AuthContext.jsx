@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
       try {
         const decoded = jwtDecode(token);
         setUser(decoded);
-        console.log(user);
+        // console.log(decoded);
       } catch (err) {
         console.error(err);
         localStorage.removeItem("token");

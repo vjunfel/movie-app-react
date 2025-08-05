@@ -1,6 +1,7 @@
 import { useAuth } from "../contexts/AuthContext";
 import { useState } from "react";
 import Axios from "../api";
+import { toast } from "react-toastify";
 
 const Profile = () => {
 	const { user } = useAuth();
@@ -15,14 +16,14 @@ const Profile = () => {
 	const handleAddMovie = async (e) => {
 		e.preventDefault();
 		try {
-			await Axios.post("/movies/create", {
+			await Axios.post("/movies/addMovie", {
 				title,
 				director,
 				year,
 				description,
 				genre,
 			});
-			alert("Movie added successfully!");
+      toast.success("Movie updated successfully!");
 			setShowForm(false);
 			setTitle("");
 			setDirector("");
@@ -31,7 +32,7 @@ const Profile = () => {
 			setGenre("");
 		} catch (err) {
 			console.error(err);
-			alert("Failed to add movie.");
+      toast.error("Failed to add movie.");
 		}
 	};
 
@@ -43,15 +44,8 @@ const Profile = () => {
 		<div className="container mt-5">
 			<div className="d-flex flex-column flex-lg-row align-items-center justify-content-between">
 				<h1 className="mb-4">Profile</h1>
-				{user.isAdmin && (
-					<button
-						id="addMovie"
-						className="btn btn-primary"
-						onClick={() => setShowForm(true)}
-					>
-						Add movie
-					</button>
-				)}
+        
+				
 			</div>
 
 			<div className="card p-4 shadow">

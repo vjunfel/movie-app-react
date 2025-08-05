@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-
+  
   const handleLogout = () => {
     logout();
     navigate("/login");
@@ -23,11 +23,11 @@ const Navbar = () => {
                 Welcome, {user.role === "admin" ? "Admin" : "User"}
               </span> */}
 
-              {user.role === "admin" && (
-                <Link className="nav-link" to="/admin">Admin Dashboard</Link>
+              {user.isAdmin ? (
+                <Link className="nav-link" to="/dashboard">Dashboard</Link>
+              ) : (
+                <Link className="nav-link" to="/profile">Profile</Link>
               )}
-
-              <Link className="nav-link" to="/profile">Profile</Link>
 
               <button
                 onClick={handleLogout}
