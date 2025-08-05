@@ -1,4 +1,4 @@
-import { useAuth } from "../contexts2/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 import Axios from "../api";
 import { toast } from "react-toastify";
 import { useState, useRef } from "react";
